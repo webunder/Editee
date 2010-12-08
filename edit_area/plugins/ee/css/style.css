@@ -1,0 +1,32 @@
+#editor{
+	border: solid 1px #A1B4C2;	
+}
+#line_number{
+	color: #5F6C74;
+	background-color:#DEE6E9;
+}
+.editarea_popup{
+	background-color: #ECF1F4;
+	border: solid 1px #A1B4C2;	
+}
+.area_toolbar{
+	background-color: #ECF1F4;
+}
+.editAreaButtonNormal {
+	border: 1px solid #ECF1F4 !important;
+}
+.editAreaButtonSelected {
+	background-color: #DEE6E9;
+}
+#processing{
+	background-color:#ECF1F4; 
+}
+#tab_browsing_list a span {
+	background: #ECF1F4; 
+}
+#tab_browsing_list a:hover span {
+	background: #DEE6E9;
+}
+.editAreaSeparatorLine {
+	background-color: #D0D7DF;
+}

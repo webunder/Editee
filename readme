@@ -1,0 +1,13 @@
+Editee, Code Editor Accessory
+-----------------------------
+
+Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables and Database Query Form textareas using EditArea scriptscript for ExpressionEngine.
+
+To use Editee accessory 
+
+- You'll need to download EditArea - javascript editor, from <http://sourceforge.net/projects/editarea/>
+
+- Place the script on server and update the location variable e.g. '/library/scripts/edit_area/'
+
+- (Optional) To change EditArea style to suit ExpressionEngine Control Panel you'll need to copy "edit_area" folder over where you uploaded the EditArea script
+
