@@ -1,6 +1,6 @@
 h1. *Editee, Code Editor Accessory for ExpressionEngine 2*
 
-p. Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables, Database Query Form, User Message, Communicate, System Offline and Email Notification Templates textareas using EditArea scriptscript for ExpressionEngine 2 by "Webunder":http://webunder.com.au
+p. Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables, Database Query Form, User Message, Communicate, System Offline and Email Notification Templates textareas using EditArea script for ExpressionEngine 2 by "Webunder":http://webunder.com.au
 
 
 p. To use Editee accessory you will need to
