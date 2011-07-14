@@ -107,7 +107,7 @@ class Editee_acc
 	private $charmap_default			= 'arrows';
 	
 	// Options "onload" or "later", specify when the textarea will be converted into an editor. If set to "later", the toogle button will be displayed to allow later conversion
-	private $display					= 'later';
+	private $display					= 'onload';
 	
 	// Define the minimum height of the editor 
 	private $min_height					= '300';
