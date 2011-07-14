@@ -6,23 +6,23 @@
 *
 * @package			Editee
 * @version			1.0.5
-* @author				Cem Meric <http://webunder.com.au> - Managing Director, Webunder
+* @author			Cem Meric <http://webunder.com.au> - Managing Director, Webunder
 * @copyright		Copyright (c) 2002-2011 Webunder <http://http://webunder.com.au>
 * @license			Attribution-ShareAlike 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0>
 * @category			Accessories
 * @purpose			Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables, Database Query Form, User Message, Communicate, System Offline and Email Notification Templates textareas using EditArea scriptscript for ExpressionEngine 2
-* @link					http://webunder.com.au/weblog/editee-code-editor-for-expressionengine
+* @link				http://webunder.com.au/weblog/editee-code-editor-for-expressionengine
 * @inspiration	Gabriel Schwardy <http://caleydon.com/en/project/cm-template-editor>
 */
 
 
 class Editee_acc
 {
-	var $name					= 'Editee';
-	var $id						= 'editee';
-	var $version			= '1.0.5';
+	var $name			= 'Editee';
+	var $id				= 'editee';
+	var $version		= '1.0.5';
 	var $description	= 'Source code editor for Templates, Template Notes, Snippets, Global Variables and Database Query Form textareas using EditArea script';
-	var $sections			= array();
+	var $sections		= array();
 	
 /**
  * SCRIPT LOCATION
@@ -30,7 +30,7 @@ class Editee_acc
  * You'll need to download the EditArea - javascript editor, from <http://sourceforge.net/projects/editarea/> and place the script on server and update below path with your server location
  *
  */
-	private $location				= '/library/scripts/edit_area/';
+	private $location	= '/library/scripts/edit_area/';
 
 
 /**
@@ -45,7 +45,7 @@ class Editee_acc
  *
  * For more info <http://www.cdolivet.com/editarea/editarea/docs/include.html>
  */
-	private $script_type				= 'edit_area_compressor.php?plugins';
+	private $script_type	= 'edit_area_compressor.php?plugins';
 
 
 /**
@@ -55,21 +55,21 @@ class Editee_acc
  *
  * options are 'true' or 'false'
  */
-	private $editarea_id_template_data						= 'true';	// Activate EditArea for TEMPLATES Textarea
+	private $editarea_id_template_data				= 'true';	// Activate EditArea for TEMPLATES Textarea
 	
-	private $editarea_id_template_notes						= 'true';	// Activate EditArea for TEMPLATE NOTES Textarea
+	private $editarea_id_template_notes				= 'true';	// Activate EditArea for TEMPLATE NOTES Textarea
 
-	private $editarea_id_thequery									= 'true';	// Activate EditArea for DATABASE QUERY FORM Textarea
+	private $editarea_id_thequery					= 'true';	// Activate EditArea for DATABASE QUERY FORM Textarea
 
-	private $editarea_id_variable_data						= 'true';	// Activate EditArea for GLOBAL VARIABLES Textarea
+	private $editarea_id_variable_data				= 'true';	// Activate EditArea for GLOBAL VARIABLES Textarea
 
-	private $editarea_id_snippet_contents					= 'true';	// Activate EditArea for SNIPPETS Textarea
+	private $editarea_id_snippet_contents			= 'true';	// Activate EditArea for SNIPPETS Textarea
 
-	private $editarea_id_user_message							= 'true';	// Activate EditArea for USER MESSAGE Textarea
+	private $editarea_id_user_message				= 'true';	// Activate EditArea for USER MESSAGE Textarea
 
-	private $editarea_id_tools_communicate				= 'true';	// Activate EditArea for COMMUNICATE Textarea
+	private $editarea_id_tools_communicate			= 'true';	// Activate EditArea for COMMUNICATE Textarea
 
-	private $editarea_id_system_offline						= 'true';	// Activate EditArea for SYSTEM OFFLINE Textarea
+	private $editarea_id_system_offline				= 'true';	// Activate EditArea for SYSTEM OFFLINE Textarea
 
 	private $editarea_id_edit_email_notification	= 'true';	// Activate EditArea for EMAIL NOTIFICATION TEMPLATES Textarea
 	
@@ -82,44 +82,44 @@ class Editee_acc
  */
 	
 	// Define the toolbar that will be displayed, each element
-	private $toolbar								= 'syntax_selection, |, select_font, |, undo,redo, |, charmap, |, go_to_line, search, highlight, change_smooth_selection, reset_highlight, |, fullscreen, word_wrap';
+	private $toolbar					= 'syntax_selection, |, select_font, |, undo,redo, |, charmap, |, go_to_line, search, highlight, change_smooth_selection, reset_highlight, |, fullscreen, word_wrap';
 	
 	// Allowed syntax definitions for web
-	private $syntax_selection_allow	= 'css,html,js,php,xml,sql';
+	private $syntax_selection_allow		= 'css,html,js,php,xml,sql';
 	
 	// Should contain a code of the syntax definition file that must be used for the highlight mode
-	private $syntax									= 'html';
+	private $syntax						= 'html';
 	
 	// Set if the editor should start with highlighted syntax displayed
-	private $start_highlight				= 'true';
+	private $start_highlight			= 'true';
 	
 	// Should contain a code of the language pack to be used for translation
-	private $language								= 'en';
+	private $language					= 'en';
 	
 	// Define one with axis the editor can be resized by the user ("no" (no resize allowed), "both" (x and y axis), "x", "y")
-	private $allow_resize						= 'n';
+	private $allow_resize				= 'n';
 	
 	// Loaded plugins. Refer to http://www.cdolivet.com/editarea/editarea/docs/customization_plugin.html for making other plugins
 	// To change EditArea style to suit ExpressionEngine Control Panel you'll need to place "ee" under EditArea plugins folder 
-	private $plugins								= 'charmap,ee';
+	private $plugins					= 'charmap,ee';
 	
 	// Plugin default view
-	private $charmap_default				= 'arrows';
+	private $charmap_default			= 'arrows';
 	
 	// Options "onload" or "later", specify when the textarea will be converted into an editor. If set to "later", the toogle button will be displayed to allow later conversion
-	private $display								= 'later';
+	private $display					= 'later';
 	
 	// Define the minimum height of the editor 
-	private $min_height							= '300';
+	private $min_height					= '300';
 	
 	// Define the font-size used to display the text in the editor
-	private $font_size							= '8';
+	private $font_size					= '10';
 	
 	// Define the font-familly used to display the text in the editor or download my favorite code editor font "DejaVu Sans Mono" via http://dejavu-fonts.org/wiki/Download 
-	private $font_family						= 'DejaVu Sans Mono';
+	private $font_family				= 'Monaco';
 
 	// Define the number of spaces that will replace tabulations (\t) in text. If tabulation should stay tabulation, set this option to false.
-	private $replace_tab_by_spaces	= '3';
+	private $replace_tab_by_spaces		= '3';
 	
 /**
  * END OF USER CONFIGURABLE SETTINGS
