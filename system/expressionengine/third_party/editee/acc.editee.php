@@ -5,7 +5,7 @@
 * Editee, Code Editor Accessory for ExpressionEngine 2
 *
 * @package			Editee
-* @version			1.0.5
+* @version			1.0.6
 * @author			Cem Meric <http://webunder.com.au> - Managing Director, Webunder
 * @copyright		Copyright (c) 2002-2011 Webunder <http://http://webunder.com.au>
 * @license			Attribution-ShareAlike 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0>
