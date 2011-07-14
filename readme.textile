@@ -7,6 +7,6 @@ p. To use Editee accessory you will need to
 
 # Place *editee* folder into *"/system/expressionengine/third_party/"* folder.
 # Put *edit_area* folder into publicly visible location e.g. *"/library/scripts/edit_area/"* folder.
-# -Download EditArea "EditArea":http://sourceforge.net/projects/editarea/ and place the script on server.-
+# -Download EditArea "EditArea":http://sourceforge.net/projects/editarea/ and place the script on server.- (now included version 0.8.2)
 # Update the location variable on line 33 in *acc.editee.php* e.g. *$location = '/library/scripts/edit_area/'* based on where you placed EditArea script.
 # Activate Editee Accessory and enjoy colour coded code highlighting.
