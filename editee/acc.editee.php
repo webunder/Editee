@@ -5,7 +5,7 @@
 * Editee, Code Editor Accessory for ExpressionEngine 2
 *
 * @package			Editee
-* @version			1.0.6
+* @version			1.0.5
 * @author			Cem Meric <http://webunder.com.au> - Managing Director, Webunder
 * @copyright		Copyright (c) 2002-2011 Webunder <http://http://webunder.com.au>
 * @license			Attribution-ShareAlike 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0>
@@ -100,7 +100,6 @@ class Editee_acc
 	private $allow_resize				= 'n';
 	
 	// Loaded plugins. Refer to http://www.cdolivet.com/editarea/editarea/docs/customization_plugin.html for making other plugins
-	// To change EditArea style to suit ExpressionEngine Control Panel you'll need to place "ee" under EditArea plugins folder 
 	private $plugins					= 'charmap,ee';
 	
 	// Plugin default view
