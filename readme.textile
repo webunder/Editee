@@ -5,8 +5,7 @@ p. Editee is a source code editor for Templates, Template Notes, Snippets, Globa
 
 p. To use Editee accessory you will need to
 
-# Place *editee* folder into *"/system/expressionengine/third_party/"* folder.
-# Put *edit_area* folder into publicly visible location e.g. *"/library/scripts/edit_area/"* folder.
-# -Download EditArea "EditArea":http://sourceforge.net/projects/editarea/ and place the script on server.- (now included version 0.8.2)
-# Update the location variable on line 33 in *acc.editee.php* e.g. *$location = '/library/scripts/edit_area/'* based on where you placed EditArea script.
+# Place *editee* folder into *third_party* folder  e.g. */system/expressionengine/third_party/*
+# Put *edit_area* folder into publicly visible location e.g. */library/scripts/edit_area/*
+# If you placed *edit_area* folder elsewhere update location variable in *acc.editee.php* file (line 33) based on where you placed it. Default is */library/scripts/edit_area/*
 # Activate Editee Accessory and enjoy colour coded code highlighting.
