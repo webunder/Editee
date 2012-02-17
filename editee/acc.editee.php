@@ -7,12 +7,12 @@
 * @package			Editee
 * @version			1.0.5
 * @author			Cem Meric <http://webunder.com.au> - Managing Director, Webunder
-* @copyright		Copyright (c) 2002-2011 Webunder <http://http://webunder.com.au>
+* @copyright		Copyright (c) 2002-2012 Webunder <http://http://webunder.com.au>
 * @license			Attribution-ShareAlike 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0>
 * @category			Accessories
 * @purpose			Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables, Database Query Form, User Message, Communicate, System Offline and Email Notification Templates textareas using EditArea scriptscript for ExpressionEngine 2
 * @link				http://webunder.com.au/weblog/editee-code-editor-for-expressionengine
-* @inspiration	Gabriel Schwardy <http://caleydon.com/en/project/cm-template-editor>
+* @inspiration	    Gabriel Schwardy <http://caleydon.com/en/project/cm-template-editor>
 */
 
 
