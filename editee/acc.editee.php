@@ -5,9 +5,9 @@
 * Editee, Code Editor Accessory for ExpressionEngine 2
 *
 * @package			Editee
-* @version			1.0.5
+* @version			1.0.6
 * @author			Cem Meric <http://webunder.com.au> - Managing Director, Webunder
-* @copyright		Copyright (c) 2002-2012 Webunder <http://http://webunder.com.au>
+* @copyright		Copyright (c) 2002-2014 Webunder <http://http://webunder.com.au>
 * @license			Attribution-ShareAlike 3.0 Unported <http://creativecommons.org/licenses/by-sa/3.0>
 * @category			Accessories
 * @purpose			Editee is a source code editor for Templates, Template Notes, Snippets, Global Variables, Database Query Form, User Message, Communicate, System Offline and Email Notification Templates textareas using EditArea scriptscript for ExpressionEngine 2
@@ -20,10 +20,10 @@ class Editee_acc
 {
 	var $name			= 'Editee';
 	var $id				= 'editee';
-	var $version		= '1.0.5';
+	var $version		= '1.0.6';
 	var $description	= 'Source code editor for Templates, Template Notes, Snippets, Global Variables and Database Query Form textareas using EditArea script';
 	var $sections		= array();
-	
+
 /**
  * SCRIPT LOCATION
  *---------------------------------------------------------------
@@ -37,7 +37,7 @@ class Editee_acc
  * SCRIPT INCLUDE TYPE
  *---------------------------------------------------------------
  * In order to make EditArea work on a webpage, you must include one external javascript file and call an init function for each textarea you want to convert with options below
- * 
+ *
  * "edit_area_full.js"
  * "edit_area_compressor.php"
  * "edit_area_compressor.php?plugins" (recommended option)
@@ -56,7 +56,7 @@ class Editee_acc
  * options are 'true' or 'false'
  */
 	private $editarea_id_template_data				= 'true';	// Activate EditArea for TEMPLATES Textarea
-	
+
 	private $editarea_id_template_notes				= 'true';	// Activate EditArea for TEMPLATE NOTES Textarea
 
 	private $editarea_id_thequery					= 'true';	// Activate EditArea for DATABASE QUERY FORM Textarea
@@ -72,7 +72,7 @@ class Editee_acc
 	private $editarea_id_system_offline				= 'true';	// Activate EditArea for SYSTEM OFFLINE Textarea
 
 	private $editarea_id_edit_email_notification	= 'true';	// Activate EditArea for EMAIL NOTIFICATION TEMPLATES Textarea
-	
+
 
 /**
  * CONFIGURATION (OPTINAL SETTINGS)
@@ -80,53 +80,53 @@ class Editee_acc
  * For further information on these settings please read the documentation at <http://www.cdolivet.com/editarea/editarea/docs/configuration.html>
  *
  */
-	
+
 	// Define the toolbar that will be displayed, each element
 	private $toolbar					= 'syntax_selection, |, select_font, |, undo,redo, |, charmap, |, go_to_line, search, highlight, change_smooth_selection, reset_highlight, |, fullscreen, word_wrap';
-	
+
 	// Allowed syntax definitions for web
 	private $syntax_selection_allow		= 'css,html,js,php,xml,sql';
-	
+
 	// Should contain a code of the syntax definition file that must be used for the highlight mode
 	private $syntax						= 'html';
-	
+
 	// Set if the editor should start with highlighted syntax displayed
 	private $start_highlight			= 'true';
-	
+
 	// Should contain a code of the language pack to be used for translation
 	private $language					= 'en';
-	
+
 	// Define one with axis the editor can be resized by the user ("no" (no resize allowed), "both" (x and y axis), "x", "y")
 	private $allow_resize				= 'n';
-	
+
 	// Loaded plugins. Refer to http://www.cdolivet.com/editarea/editarea/docs/customization_plugin.html for making other plugins
 	private $plugins					= 'charmap,ee';
-	
+
 	// Plugin default view
 	private $charmap_default			= 'arrows';
-	
+
 	// Options "onload" or "later", specify when the textarea will be converted into an editor. If set to "later", the toogle button will be displayed to allow later conversion
 	private $display					= 'onload';
-	
-	// Define the minimum height of the editor 
+
+	// Define the minimum height of the editor
 	private $min_height					= '300';
-	
+
 	// Define the font-size used to display the text in the editor
 	private $font_size					= '10';
-	
-	// Define the font-familly used to display the text in the editor or download my favorite code editor font "DejaVu Sans Mono" via http://dejavu-fonts.org/wiki/Download 
+
+	// Define the font-familly used to display the text in the editor or download my favorite code editor font "DejaVu Sans Mono" via http://dejavu-fonts.org/wiki/Download
 	private $font_family				= 'Monaco';
 
 	// Define the number of spaces that will replace tabulations (\t) in text. If tabulation should stay tabulation, set this option to false.
 	private $replace_tab_by_spaces		= '3';
-	
+
 /**
  * END OF USER CONFIGURABLE SETTINGS
  *---------------------------------------------------------------
- */	
- 
- 
- 
+ */
+
+
+
 /**
  * SET SECTIONS
  *---------------------------------------------------------------
@@ -136,9 +136,9 @@ class Editee_acc
 	function set_sections()
 	{
 		$EE =& get_instance();
-		
+
 		$this->EE =& get_instance();
-		
+
 		$this->EE->load->library('javascript');
 
 
@@ -152,22 +152,22 @@ class Editee_acc
 			if ($this->EE->input->get('M') == "edit_template" ||
 				$this->EE->input->get('M') == "update_template" ||
 				$this->EE->input->get('M') == "create_new_template" ) {
-				$EE->cp->add_to_head('			
+				$EE->cp->add_to_foot('
 				<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 				<script language="javascript" type="text/javascript">
 					editAreaLoader.init({
 						id : "template_data",
-						toolbar: "'. $this->toolbar .'", 
-						syntax: "'. $this->syntax .'", 
-						start_highlight: "'. $this->start_highlight .'", 
-						language: "'. $this->language .'", 
-						allow_resize: "'. $this->allow_resize .'", 
-						syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-						plugins: "'. $this->plugins .'", 
-						charmap_default: "'. $this->charmap_default .'", 
-						display: "'. $this->display .'", 
-						min_height: "'. $this->min_height .'", 
-						font_family: "'. $this->font_family .'", 
+						toolbar: "'. $this->toolbar .'",
+						syntax: "'. $this->syntax .'",
+						start_highlight: "'. $this->start_highlight .'",
+						language: "'. $this->language .'",
+						allow_resize: "'. $this->allow_resize .'",
+						syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+						plugins: "'. $this->plugins .'",
+						charmap_default: "'. $this->charmap_default .'",
+						display: "'. $this->display .'",
+						min_height: "'. $this->min_height .'",
+						font_family: "'. $this->font_family .'",
 						font_size: "'. $this->font_size .'",
 						replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 					});
@@ -181,9 +181,9 @@ class Editee_acc
  *---------------------------------------------------------------
  * Edit Template Notes Textareas
  *
- */ 
+ */
 		if ($this->editarea_id_template_notes == "true" && $this->editarea_id_template_data == "false"){
-			$EE->cp->add_to_head('			
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>');
 		}
 
@@ -191,21 +191,21 @@ class Editee_acc
 			if ($this->EE->input->get('M') == "edit_template" ||
 				$this->EE->input->get('M') == "update_template" ||
 				$this->EE->input->get('M') == "create_new_template" ) {
-				$EE->cp->add_to_head('			
+				$EE->cp->add_to_foot('
 				<script language="javascript" type="text/javascript">
 					editAreaLoader.init({
 						id : "template_notes",
-						toolbar: "'. $this->toolbar .'", 
-						syntax: "'. $this->syntax .'", 
-						start_highlight: "'. $this->start_highlight .'", 
-						language: "'. $this->language .'", 
-						allow_resize: "'. $this->allow_resize .'", 
-						syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-						plugins: "'. $this->plugins .'", 
-						charmap_default: "'. $this->charmap_default .'", 
-						display: "'. $this->display .'", 
-						min_height: "'. $this->min_height .'", 
-						font_family: "'. $this->font_family .'", 
+						toolbar: "'. $this->toolbar .'",
+						syntax: "'. $this->syntax .'",
+						start_highlight: "'. $this->start_highlight .'",
+						language: "'. $this->language .'",
+						allow_resize: "'. $this->allow_resize .'",
+						syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+						plugins: "'. $this->plugins .'",
+						charmap_default: "'. $this->charmap_default .'",
+						display: "'. $this->display .'",
+						min_height: "'. $this->min_height .'",
+						font_family: "'. $this->font_family .'",
 						font_size: "'. $this->font_size .'",
 						replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 					});
@@ -221,23 +221,23 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "sql_query_form" && $this->editarea_id_thequery == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "thequery", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "thequery",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
@@ -249,28 +249,28 @@ class Editee_acc
  *
  */
 		if (($this->EE->input->get('M') == "global_variables_update" || $this->EE->input->get('M') == "global_variables_create") && $this->editarea_id_variable_data == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "variable_data", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "variable_data",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
 		}
-	
+
 
 /**
  * ADD JAVASCRIPT HEADER TO
@@ -279,29 +279,29 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "snippets_edit" && $this->editarea_id_snippet_contents == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "snippet_contents", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "snippet_contents",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
 		}
 
-		
+
 /**
  * ADD JAVASCRIPT HEADER TO
  *---------------------------------------------------------------
@@ -309,29 +309,29 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "user_message" && $this->editarea_id_user_message == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "template_data", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "template_data",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
 		}
 
-		
+
 /**
  * ADD JAVASCRIPT HEADER TO
  *---------------------------------------------------------------
@@ -339,29 +339,29 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "tools_communicate" && $this->editarea_id_tools_communicate == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "message", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "message",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
 		}
 
-		
+
 /**
  * ADD JAVASCRIPT HEADER TO
  *---------------------------------------------------------------
@@ -369,29 +369,29 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "system_offline" && $this->editarea_id_system_offline == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "template_data", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "template_data",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
 		}
 
-		
+
 /**
  * ADD JAVASCRIPT HEADER TO
  *---------------------------------------------------------------
@@ -399,23 +399,23 @@ class Editee_acc
  *
  */
 		if ($this->EE->input->get('M') == "edit_email_notification" && $this->editarea_id_edit_email_notification == "true") {
-			$EE->cp->add_to_head('	
+			$EE->cp->add_to_foot('
 			<script language="javascript" type="text/javascript" src="'. $this->location . $this->script_type .'"></script>
 			<script language="javascript" type="text/javascript">
 				editAreaLoader.init({
-					id: "template_data", 
-					toolbar: "'. $this->toolbar .'", 
-					syntax: "'. $this->syntax .'", 
-					start_highlight: "'. $this->start_highlight .'", 
-					language: "'. $this->language .'", 
-					allow_resize: "'. $this->allow_resize .'", 
-					syntax_selection_allow: "'. $this->syntax_selection_allow .'", 
-					plugins: "'. $this->plugins .'", 
-					charmap_default: "'. $this->charmap_default .'", 
-					display: "'. $this->display .'", 
-					min_height: "'. $this->min_height .'", 
-					font_size: "'. $this->font_size .'", 
-					font_family: "'. $this->font_family .'", 
+					id: "template_data",
+					toolbar: "'. $this->toolbar .'",
+					syntax: "'. $this->syntax .'",
+					start_highlight: "'. $this->start_highlight .'",
+					language: "'. $this->language .'",
+					allow_resize: "'. $this->allow_resize .'",
+					syntax_selection_allow: "'. $this->syntax_selection_allow .'",
+					plugins: "'. $this->plugins .'",
+					charmap_default: "'. $this->charmap_default .'",
+					display: "'. $this->display .'",
+					min_height: "'. $this->min_height .'",
+					font_size: "'. $this->font_size .'",
+					font_family: "'. $this->font_family .'",
 					replace_tab_by_spaces: "'. $this->replace_tab_by_spaces .'"
 				});
 			</script>');
@@ -427,13 +427,13 @@ class Editee_acc
  *---------------------------------------------------------------
  */
 		$str = <<<END
-		
+
 		$("#editee.accessory").remove();
 		$("#accessoryTabs").find("a.editee").parent("li").remove();
 END;
-		
+
 		$this->EE->javascript->output($str);
 
 	}
 }
-/* Location: ./system/expressionengine/third_party/editee/acc.editee.php */ 
+/* Location: ./system/expressionengine/third_party/editee/acc.editee.php */
